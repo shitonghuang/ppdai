@@ -1,0 +1,151 @@
+
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ category_name }}{% endblock %}
+
+{% block body_block %}
+
+    <!-- row-fluid 1  -->
+    <div class="row-fluid">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">条件</div>
+            </div>
+            <div class="block-content collapse in">
+                <div class="span12">
+                     <form class="form-horizontal" method="post" action="/rango/select_loan/">
+                      {% csrf_token %}
+                      <fieldset>
+                        <legend>投资条件</legend>
+
+                        <div class="control-group success">
+                          <label class="control-label" for="selectError">能承受的风险级别</label>
+                          <div class="controls">
+                            <select id="selectError">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                              <option>7</option>
+                              <option>8</option>
+                              <option>9</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="control-group success">
+                          <label class="control-label" for="selectError">资金回笼期限</label>
+                          <div class="controls">
+                            <select id="selectError">
+                              <option>短周期</option>
+                              <option>中周期</option>
+                              <option>长周期</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="control-group success">
+                          <label class="control-label" for="selectError">投资标的数量</label>
+                          <div class="controls">
+                            <select id="selectError">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                              <option>7</option>
+                              <option>8</option>
+                              <option>9</option>
+                              <option>10个以上</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="control-group success">
+                          <label class="control-label" for="selectError">投资风格</label>
+                          <div class="controls">
+                            <select id="selectError">
+                              <option>稳健</option>
+                              <option>保守</option>
+                              <option>激进</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-actions">
+                          <button type="submit" class="btn btn-primary">投标</button>
+                          <button type="reset" class="btn">取消</button>
+                        </div>
+
+                      </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /block -->
+    </div>
+    <!-- row-fluid 1  -->
+
+
+    <!-- row-fluid 2  -->
+    <div class="row-fluid">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">结果</div>
+            </div>
+            <div class="block-content collapse in">
+                <div class="span12">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>借款名称</th>
+                          <th>借款金额</th>
+                          <th>信用评级</th>
+                          <th>借款期限</th>
+                          <th>借款利率</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% if loans %}
+                        {% for loan in loans %}
+                        <tr>
+                          <td>{{ loan.title }}</td>
+                          <td>{{ loan.amount }}</td>
+                          <td>{{ loan.creditcode }}</td>
+                          <td>{{ loan.months }}</td>
+                          <td>{{ loan.rate }}</td>
+                          <th><input type="checkbox"  value="option1" ></th>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+
+             <div class="form-actions">
+                 <button type="reset" class="btn" style="float:right; padding-right: 50px">取消</button>
+              <button type="submit" class="btn btn-primary" style="float:right">提交</button>
+
+            </div>
+        </div>
+        <!-- /block -->
+    </div>
+    <!-- row-fluid 2  -->
+
+
+
+
+<script>
+// Easy pie charts
+$('.chart').easyPieChart({animate: 1000});
+</script>
+
+{% endblock %}

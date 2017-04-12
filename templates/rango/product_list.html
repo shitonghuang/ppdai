@@ -1,0 +1,104 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Index{% endblock %}
+
+        {% block body_block %}
+
+            <div class="page-header">
+        
+            </div>
+
+
+        <div class="row placeholders">
+            <div class="col-xs-12 col-sm-6 placeholder">
+                <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">金额最高</h3>
+                </div>
+                </div>
+
+        {% if product1 %}
+                    <ul class="list-group">
+            {% for product in product1 %}
+                    <li class="list-group-item"><a href="{% url 'product' product.title %}">{{ product.title }}</a></li>
+            {% endfor %}
+                    </ul>
+        {% else %}
+                    <strong>There are no categories present.</strong>
+        {% endif %}
+
+            </div>
+            <div class="col-xs-12 col-sm-6 placeholder">
+                <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">利率最高</h3>
+                </div>
+                </div>
+
+        {% if product2 %}
+                    <ul class="list-group">
+            {% for product in product2 %}
+                         <li class="list-group-item"><a href="{% url 'product' product.title %}">{{ product.title }}</a></li>
+            {% endfor %}
+                    </ul>
+        {% else %}
+                    <strong>There are no categories present.</strong>
+        {% endif %}
+            </div>   
+
+        </div>
+
+
+
+
+
+    
+        <div class="row placeholders">
+            <div class="col-xs-12 col-sm-6 placeholder">
+                <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">期限最长</h3>
+                </div>
+                </div>
+
+        {% if product3 %}
+                    <ul class="list-group">
+            {% for product in product3 %}
+                    <li class="list-group-item"><a href="{% url 'product' product.title %}">{{ product.title }}</a></li>
+            {% endfor %}
+                    </ul>
+        {% else %}
+                    <strong>There are no notice present.</strong>
+        {% endif %}
+
+            </div>
+            <div class="col-xs-12 col-sm-6 placeholder">
+                <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">信用最好</h3>
+                </div>
+                </div>
+
+        {% if product4 %}
+                    <ul class="list-group">
+            {% for product in product4 %}
+                         <li class="list-group-item"><a href="{% url 'product' product.title %}">{{ product.title }}</a></li>
+            {% endfor %}
+                    </ul>
+        {% else %}
+                    <strong>There are no categories present.</strong>
+        {% endif %}
+            </div>   
+
+        </div>
+
+
+
+
+
+
+
+       
+        {% endblock %}

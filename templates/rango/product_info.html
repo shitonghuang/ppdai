@@ -1,0 +1,67 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body_block %}
+   <!-- row-fluid 1  -->
+    <div class="row-fluid">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">详情</div>
+            </div>
+            <div class="block-content collapse in">
+                <div class="span12">
+                     <form class="form-horizontal">
+                      <fieldset>
+                        <legend>标的详情</legend>
+
+
+                        <div class="control-group">
+                          <label class="control-label" for="focusedInput">产品名称</label>
+                          <div class="controls">
+                            {{ title}}
+                          </div>
+                        </div>
+
+
+                        <div class="control-group">
+                          <label class="control-label" for="focusedInput">起投金额</label>
+                          <div class="controls">
+                            {{ amount }}
+                          </div>
+                        </div>
+
+                        <div class="control-group">
+                          <label class="control-label" for="focusedInput">手续费</label>
+                          <div class="controls">
+                            {{ charge }}
+                          </div>
+                        </div>
+
+
+                        <div class="control-group">
+                          <label class="control-label" for="focusedInput">年化收益率</label>
+                          <div class="controls">
+                            {{ rate }}
+                          </div>
+                        </div>
+
+                        
+
+                        <div class="form-actions">
+                          <button type="submit" class="btn btn-primary">一键购买</button>
+                          <button type="reset" class="btn">取消</button>
+                        </div>
+
+                      </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /block -->
+    </div>
+    <!-- row-fluid 1  -->
+{% endblock %}

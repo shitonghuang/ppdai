@@ -1,0 +1,30 @@
+{% extends 'rango/base.html' %}
+
+{% load static %}
+
+{% block body_block %}
+
+    <h1>发布评论</h1>
+
+        <form id="comment_form" method="POST" action="/rango/page/{{ page.title }}/{{ user.username }}/add_comment/">
+
+
+            
+            {% csrf_token %}
+                {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+             <ul class="list-group">
+            {% for field in form.visible_fields %}
+                <li class="list-group-item">{{ field.help_text }}</li>
+                <li class="list-group-item">{{ field }}</li>
+                {{ field.errors }}
+            {% endfor %}
+            </ul>
+            <input type="submit" name="submit" value="发布" />
+        </form>
+        
+
+        
+{% endblock %}
+    

@@ -1,0 +1,94 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body_block %}
+    <h1>帖子内容</h1>
+    {% if contents %}
+     <div class="row placeholders">
+        <div class="col-xs-12 col-sm-6 placeholder">
+                <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ title }}</h3>
+                </div>
+                </div>
+
+        
+                    <ul class="list-group">
+                    <li class="list-group-item"><strong>作者:</strong>{{ author }}</a></li>
+                    <li class="list-group-item"><strong>发布时间:</strong>{{ time }}</a></li>
+                    <li class="list-group-item">{{ contents }}</a></li>
+
+           
+                    </ul>
+        
+                    
+        
+
+        </div>
+
+
+        <form action="/rango/file_download/{{ sourcefile }}/" method="post">
+        	{% csrf_token %}
+            <button type="submit" name="s_thread" class="btn btn-primary ">下载附件</button>
+            <div class="clearfix"></div>
+        </form>
+
+    
+    </div>
+
+     <div class="row placeholders">
+     <div class="row placeholders">
+        <div class="col-xs-12 col-sm-6 placeholder">
+                <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">评论内容</h3>
+                </div>
+                </div>
+
+        
+                    <ul class="list-group">
+                    {% for com in comment %}
+                    <li class="list-group-item"><strong>作者:</strong>{{ com.author }}<strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp发表时间:</strong>{{ com.time }}</li>
+                    <li class="list-group-item"><strong>内容:</strong>{{ com.contents }}</a></li>
+                    {% endfor %}
+
+           
+                    </ul>
+        
+                    
+        
+
+        </div>
+
+        
+        <!--
+        <form id="comment_form" method="POST" action="/rango/category/{{ title }}/{{ user.username }}/add_conmment/" >
+        	{% csrf_token %}
+            <button type="submit" name="s_thread" class="btn btn-primary ">添加评论</button>
+            <div class="clearfix"></div>
+        </form>
+        -->
+        
+        {% if user.is_authenticated %}
+            <button type="submit" name="s_thread" ><a href="{% url 'add_comment' page.title user.username %}">添加评论</a></button>
+        {% else %}
+            <strong>请登陆后添加评论</strong>
+        {% endif %}
+
+
+    </div>
+
+
+
+
+        
+        
+       
+   
+
+    {% endif %}
+    
+{% endblock %}

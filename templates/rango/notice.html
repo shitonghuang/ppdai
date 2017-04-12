@@ -1,0 +1,35 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body_block %}
+    <h1>公告信息</h1>
+    {% if contents %}
+     <div class="row placeholders">
+        <div class="col-xs-12 col-sm-6 placeholder">
+                <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ title }}</h3>
+                </div>
+                </div>
+
+        
+                    <ul class="list-group">
+                    <li class="list-group-item"><strong>发布时间:</strong>{{ time }}</a></li>
+                    <li class="list-group-item">{{ contents }}</a></li>
+
+           
+                    </ul>
+        
+                    
+        
+
+        </div>
+
+    
+    </div>
+    {% endif %}
+    
+{% endblock %}
